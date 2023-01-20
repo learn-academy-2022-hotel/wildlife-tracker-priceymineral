@@ -23,6 +23,15 @@ class AnimalsController < ApplicationController
         end
     end
 
+    def destroy
+        animal = Animal.find(params[:id])
+        if animal.destroy
+            render json: animal
+        else
+            render json: animal.errors
+        end
+    end
+
 
     private
     def animal_params
